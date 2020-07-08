@@ -201,10 +201,12 @@ void visualize_tree (Node * tree, int depth, int l, int r, char **res)
 
     		for (int i = l + mL; i <= r - mR; i++)
 			res[depth + 2][i] = '-';
+		res[depth + 2][(l + r) / 2] = '^';
 
 		for (int i = 0; i < n; i++)
 		{
 			res[depth + 3][l + (((tree -> child)[i]) -> width - 1) / 2] = '|';
+			res[depth + 2][l + (((tree -> child)[i]) -> width - 1) / 2] = '.';
 			//cerr << "[DEBUG] | at " << (((tree -> child)[i]) -> width - 1) / 2 << "\n";
 			visualize_tree((tree -> child)[i], depth + 4, l, ((tree -> child)[i]) -> width + l - 1, res);
 			l += ((tree -> child)[i]) -> width + 2;
